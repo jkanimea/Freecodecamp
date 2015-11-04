@@ -1,0 +1,33 @@
+
+//Bonfire: Steamroller ---> Solution
+
+//Recursive function that test first if the files is Array
+//push it into the new Array called Flattend
+//else calls itself and repeat the process
+ 
+ //for example below arr[0] -> [1 arr[1] -> [2]
+   arr.forEach(flatten);
+
+
+function steamroller(arr) {
+ var flattenedArray = [];
+
+  // Create function that adds an element if it is not an array.
+  // If it is an array, then loops through it and uses recursion on that array.
+  var flatten = function(arg) {
+    if (!Array.isArray(arg)) {
+      flattenedArray.push(arg);
+    } else {
+      
+   // loop into every variable provide by single element from below
+      for (var a in arg) {
+        flatten(arg[a]);
+      }
+    }
+  };
+  
+   arr.forEach(flatten);
+  return flattenedArray;
+}
+
+steamroller([1, [2], [3, [[4]]]]);
